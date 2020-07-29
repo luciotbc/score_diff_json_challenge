@@ -1,4 +1,4 @@
-require_relative '../lib/score_diff'
+require_relative '../score_diff'
 
 RSpec.describe ScoreDiff do
   let(:hash_a) { { a: 1, b: [1, 'a'], c: 'b', d: { e: 2, f: { g: 3 } } } }
