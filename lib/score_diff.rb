@@ -1,6 +1,11 @@
 require 'json'
 
 class ScoreDiff
+  def self.calculate_json_score(file_name_a, file_name_b)
+    hash_a = JSON.parse(File.read(file_name_a))
+    hash_b = JSON.parse(File.read(file_name_b))
+    calculate_hash_score(hash_a, hash_b)
+  end
 
   def self.calculate_hash_score(a, b)
     return 0 if a == b

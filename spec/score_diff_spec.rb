@@ -60,4 +60,21 @@ RSpec.describe ScoreDiff do
       end
     end
   end
+
+  describe '#calculate_json_score' do
+    let(:file_name_a) { 'spec/fixtures/Sample1.json' }
+    let(:file_name_b) { 'spec/fixtures/Sample2.json' }
+
+    subject { ScoreDiff.calculate_json_score(file_name_a, file_name_b) }
+
+    it { expect(subject).to eq 0.5 }
+
+    context 'when hash is equals' do
+      let(:file_name_b) { file_name_a }
+
+      it 'should be zero' do
+        expect(subject).to eq 0
+      end
+    end
+  end
 end
