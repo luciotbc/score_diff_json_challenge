@@ -1,6 +1,10 @@
 require 'json'
 
 class ScoreDiff
+  def self.print_json_score(file_name_a, file_name_b)
+    puts calculate_json_score(file_name_a, file_name_b)
+  end
+
   def self.calculate_json_score(file_name_a, file_name_b)
     hash_a = JSON.parse(File.read(file_name_a))
     hash_b = JSON.parse(File.read(file_name_b))
@@ -12,7 +16,6 @@ class ScoreDiff
 
     partial_result = { keys_count: 0, differences: 0 }
     deep_diff(a, b, partial_result)
-    puts "partial_result: #{partial_result} result: #{partial_result[:differences].to_f / partial_result[:keys_count]}"
     partial_result[:differences].to_f / partial_result[:keys_count]
   end
 
